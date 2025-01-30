@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Route Map</title>
+    <link href="https://unpkg.com/maplibre-gl@3.x/dist/maplibre-gl.css" rel="stylesheet" />
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/map.css' %}">
+</head>
+<body>
+    <div class="controls">
+        <label>Start Lat:</label> <input type="text" id="start-lat" value="47.6205">
+        <label>Start Lng:</label> <input type="text" id="start-lng" value="-122.3483"><br>
+
+        <label>Destination Lat:</label> <input type="text" id="dest-lat" value="37.7749">
+        <label>Destination Lng:</label> <input type="text" id="dest-lng" value="-122.4194"><br>
+
+        <button onclick="findRoute()">Find</button>
+        <p><strong>Distance:</strong><span id="distance">{{ distance }}</span> miles</p>
+        <p><strong>Duration:</strong><span id="duration">{{ duration }}</span> minutes</p>
+        <p><strong>Estimated Fuel Cost:</strong> $<span id="fuel-cost">0.00</span></p>
+    </div>
+
+    <div id="map"></div>
+
+    <script src="https://unpkg.com/maplibre-gl@3.x/dist/maplibre-gl.js"></script>
+
+    <script>
+        window.env = {
+            API_KEY: "{{ API_KEY }}",
+            REGION: "{{ REGION }}"
+        };
+    </script>
+    <script src="{% static 'js/map.js' %}"></script>
+</body>
+</html>
