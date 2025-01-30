@@ -48,7 +48,7 @@ def get_closest_fuel_stations(route_geometry, max_miles_per_section=250, max_dis
     return cheapest_stations
 
 
-def calc_section_indices(route_geometry, max_miles_per_section=150):
+def calc_section_indices(route_geometry, max_miles_per_section):
     total_distance = 0
     section_starts = []  # list of starting indices for each 'max_miles_per_section'-mile section
     distances = []  # list of accumulative distances
